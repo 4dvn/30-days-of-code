@@ -41,7 +41,8 @@ void loop() {
     String count = String(counter++);
     String latitude = String(lat,6);
     String longitude = String(lon,6);
-    String dataString = count+","+latitude+","+longitude;
+    String alt = String(gps.f_altitude());
+    String dataString = count+","+latitude+","+longitude+","+alt;
     Serial.println(dataString);
 
     print_date(gps);
