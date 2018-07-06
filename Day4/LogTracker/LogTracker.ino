@@ -1,6 +1,5 @@
 #include <SoftwareSerial.h>
 #include <TinyGPS.h>
-#include <SPI.h>
 #include <SD.h>
 
 float lat = 0.0,lon = 0.0; // create variable for latitude and longitude object 
@@ -44,8 +43,6 @@ void loop() {
     String alt = String(gps.f_altitude());
     String dataString = count+","+latitude+","+longitude+","+alt;
     Serial.println(dataString);
-
-    print_date(gps);
 
     // open the file. note that only one file can be open at a time,
     // so you have to close this one before opening another.
