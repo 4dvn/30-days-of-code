@@ -2,7 +2,7 @@
 #include <TinyGPS.h>
 #include <SD.h>
 
-float lat = 0.0,lon = 0.0; // create variable for latitude and longitude object 
+float lat = 0.0,lon = 0.0, alt = 0.0;
 SoftwareSerial gpsSerial(18,19);//rx,tx
 TinyGPS gps;
 
@@ -33,6 +33,7 @@ void loop() {
     while(gpsSerial.available()) { // check for gps data
         if(gps.encode(gpsSerial.read())) { 
             gps.f_get_position(&lat,&lon); // get latitude and longitude
+            alt = gps.f_altitude();
         }
     }
     
@@ -40,8 +41,8 @@ void loop() {
     String count = String(counter++);
     String latitude = String(lat,6);
     String longitude = String(lon,6);
-    String alt = String(gps.f_altitude());
-    String dataString = count+","+latitude+","+longitude+","+alt;
+    String altitude = String(alt);
+    String dataString = count+","+latitude+","+longitude+","+altitude;
     Serial.println(dataString);
 
     // open the file. note that only one file can be open at a time,
