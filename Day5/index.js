@@ -19,7 +19,6 @@ function httpsGet(query, callback) {
     };
 
     var req = https.request(options, res => {
-        console.log('a cat anus');
         res.setEncoding('utf8');
         var dataline = '';
         //accept incoming data asynchronously
