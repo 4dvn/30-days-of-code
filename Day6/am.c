@@ -19,17 +19,18 @@ void space2(){space();space();}
 int main(){
 	DDRB|=_BV(PB0);
 	for(;;){
-		dot();dot();dot();space(); 			// S
-		dash();dot();dash();dot();space(); 	// C
-		dash();dash();dash();space(); 		// O
-		dash();space(); 					// T
-		dash();space(); 					// T
-		space2();
-		dot();dash();dot();space();			// R
-		dash();dash();dash();space(); 		// O
-		dash();dot();dash();dot();space(); 	// C
-		dash();dot();dash();space();		// K
-		dot();dot();dot();space(); 			// S
+		dot(); dot(); dot(); dot(); space();			// H
+		dot(); space();									// E
+		dot(); dash(); dot(); dot(); space();			// L
+		dot(); dash(); dot(); dot(); space();			// L
+		dash(); dash(); dash(); space();				// O
+		dash2();
+		dot(); dash(); dash(); space();					// W
+		dash(); dash(); dash(); space();				// O
+		dot(); dash(); dot(); space();					// R
+		dot(); dash(); dot(); dot(); space();			// L
+		dash(); dot(); dot(); space();					// D
+		dot(); dash(); dot(); dash(); dot(); dash(); 	// .
 		_delay_ms(1000); // silence
 	}
 	return 0;
