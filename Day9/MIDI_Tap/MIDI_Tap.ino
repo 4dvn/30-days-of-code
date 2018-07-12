@@ -32,9 +32,7 @@ void noteOff(byte channel, byte pitch, byte velocity) {
   MidiUSB.sendMIDI(noteOff);
 }
 
-long timer = 0;
-float accY, oldAccY, velocity;
-bool isOn = false;
+c
 
 void setup() {
     Serial.begin(115200);
@@ -49,7 +47,6 @@ void loop() {
     // Take weighted average of samples
     float sample = mpu6050.getAccY();
     accY = ( min(sample, accY)*0.30 + max(sample, accY)*0.70 );
-    //accY = (mpu6050.getAccY()+accY)/2;
 
     // If sample period is up
     if(millis() - timer > SAMPLE_PERIOD){
@@ -68,7 +65,7 @@ void loop() {
             velocity = max(min(ACC_MAX, diffY), ACC_MIN);
             
             // Map to Int range [VELOCITY_BIAS:127]
-            velocity = map(velocity, ACC_MIN, ACC_MAX, VELOCITY_BIAS, 127);
+            velocity = int(map(velocity, ACC_MIN, ACC_MAX, VELOCITY_BIAS, 127));
            
             noteOn(1, MIDI_NOTE, velocity);
             isOn = true;
